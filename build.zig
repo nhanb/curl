@@ -59,7 +59,7 @@ pub fn build(b: *std.Build) !void {
     var enable_windows_sspi = b.option(bool, "windows-sspi", "Enable SSPI on Windows (default: use-schannel)") orelse use_schannel;
     const enable_ipv6 = b.option(bool, "enable-ipv6", "Enable IPv6 support (default: true)") orelse true;
     const enable_threaded_resolver = dependentBoolOption(b, "threaded-resolver", "Enable threaded DNS lookup", true, !enable_ares, false);
-    const enable_unicode = b.option(bool, "uncide", "Use the Unicode version of the Windows API functions (default: false)") orelse false;
+    const enable_unicode = b.option(bool, "unicode", "Use the Unicode version of the Windows API functions (default: false)") orelse false;
     const enable_unix_sockets = b.option(bool, "unix-sockets", "Enable Unix domain sockets support (default: true)") orelse true;
     const ech = b.option(bool, "ech", "Enable ECH support (default: false)") orelse false;
     var httpsrr = b.option(bool, "httpsrr", "Enable HTTPS RR support (default: false)") orelse false;
@@ -115,9 +115,9 @@ pub fn build(b: *std.Build) !void {
 
     // CA bundle options
 
-    var ca_bundle = b.option([]const u8, "ca-bundle", "Path to the CA bundle. Set null to disable or 'auto' for auto-detection. Defaults to 'auto'.") orelse "auto";
+    var ca_bundle = b.option([]const u8, "ca-bundle", "Path to the CA bundle. Set 'none' to disable or 'auto' for auto-detection. Defaults to 'auto'.") orelse "auto";
     const ca_fallback = b.option(bool, "ca-fallback", "Use built-in CA store of TLS backend. Defaults to OFF") orelse false;
-    var ca_path = b.option([]const u8, "ca-path", "Location of default CA path. Set null to disable or 'auto' for auto-detection. Defaults to 'auto'.") orelse "auto";
+    var ca_path = b.option([]const u8, "ca-path", "Location of default CA path. Set 'none' to disable or 'auto' for auto-detection. Defaults to 'auto'.") orelse "auto";
     const ca_embed = b.option([]const u8, "ca-embed", "Path to the CA bundle to embed in the curl tool");
 
     const disable_ca_search = b.option(bool, "disable-ca-search", "Disable unsafe CA bundle search in PATH on Windows") orelse false;

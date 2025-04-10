@@ -8,7 +8,7 @@ This is [curl](https://github.com/curl/curl), packaged for [Zig](https://ziglang
 
 > [!WARNING]
 >
-> Curl depends on https://github.com/allyourcodebase/openssl which currently doesn't work on macOS. Consider using a different openssl implementation.
+> Curl depends on https://github.com/allyourcodebase/openssl which currently doesn't work on macOS. Consider using a different ssl implementation.
 
 ### Standalone library (libcurl) and command-line tool (curl)
 
@@ -72,6 +72,6 @@ const curl_dependency = b.dependency("curl", .{
     .libssh2 = false,
     .libidn2 = false,
     .nghttp2 = false,
-    .disable-ldap = true,
+    .@"disable-ldap" = true,
 });
 ```
