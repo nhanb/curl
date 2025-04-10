@@ -1,0 +1,43 @@
+.{
+    .name = .curl,
+    .version = "8.13.0",
+    .minimum_zig_version = "0.14.0",
+    .dependencies = .{
+        .curl = .{
+            .url = "git+https://github.com/curl/curl?ref=curl-8_13_0#1c3149881769e7bd79b072e48374e4c2b3678b2f",
+            .hash = "N-V-__8AAOW3DQE-bmc-hp-1TcgJeJM2jNRzWMhl3tuWEZwb",
+        },
+        .zlib = .{
+            .url = "git+https://github.com/allyourcodebase/zlib#6c72830882690c1eb2567a537525c3f432c1da50",
+            .hash = "zlib-1.3.1-ZZQ7lVgMAACwO4nUUd8GLhsuQ5JQq_VAhlEiENJTUv6h",
+            .lazy = true,
+        },
+        .zstd = .{
+            .url = "git+https://github.com/allyourcodebase/zstd?ref=1.5.7#01327d49cbc56dc24c20a167bb0055d7fc23de84",
+            .hash = "zstd-1.5.7-KEItkJ8vAAC5_rRlKmLflYQ-eKXbAIQBWZNmmJtS18q0",
+            .lazy = true,
+        },
+        .brotli = .{
+            .url = "git+https://github.com/hexops/brotli#10961426f03016e273f4f4653eae907e9e2339b6",
+            .hash = "N-V-__8AAKgyIgAxeJp8Y2TC-ZFkwRg2Ybtf6RStczbMIkA5",
+            .lazy = true,
+        },
+        .openssl = .{
+            .url = "git+https://github.com/allyourcodebase/openssl#f348124c5382bcc377f1b3277357cbf2ed2fb8db",
+            .hash = "openssl-3.3.1-2-TC9C3Se3ZACF5WO_CjoD7Bt_X94oCsAAbbwhOp1rTZBe",
+            .lazy = true,
+        },
+        .mbedtls = .{
+            .url = "git+https://github.com/allyourcodebase/mbedtls#7d862fe61ff2eac37ee54e1e017fc287bed1cd7a",
+            .hash = "mbedtls-3.6.2-E4NURzYUAABWLBwHJWx_ppb_j2kDSoGfCfR2rI2zs9dz",
+            .lazy = true,
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "LICENSE",
+        "README.md",
+    },
+    .fingerprint = 0x3e01b4d58c05098, // Changing this has security and trust implications.
+}

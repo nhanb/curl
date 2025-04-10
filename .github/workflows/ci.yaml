@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        zig-version: [0.14.0]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Zig
+        uses: mlugg/setup-zig@v1
+        with:
+          version: ${{ matrix.zig-version }}
+
+      - name: Check Formatting
+        run: zig fmt --ast-check --check .
+
+      - name: Build (Windows)
+        if: matrix.os == 'windows-latest'
+        run: zig build -Dlibpsl=false -Dlibssh2=false -Dlibidn2=false -Dnghttp2=false --summary all
+
+      - name: Build (MacOS)
+        if: matrix.os == 'macos-latest'
+        run: zig build -Duse-openssl=false -Dlibpsl=false -Dlibssh2=false -Dlibidn2=false -Dnghttp2=false --summary all
+
+      - name: Build (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: zig build -Dlibpsl=false -Dlibssh2=false -Dlibidn2=false -Dnghttp2=false -Ddisable-ldap --summary all
