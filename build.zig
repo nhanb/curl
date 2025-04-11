@@ -303,11 +303,10 @@ pub fn build(b: *std.Build) !void {
     }
 
     if (use_schannel) {
-        // TODO
         enable_windows_sspi = true;
     }
     if (use_sectransp) {
-        // TODO
+        use_core_foundation_and_core_services = true;
         curl.root_module.linkFramework("Security", .{});
     }
 
